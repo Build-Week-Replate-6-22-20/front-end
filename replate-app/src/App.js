@@ -61,9 +61,9 @@ function App() {
 				foodType: 'fruit',
 				weight: '1lb',
 				pickupDate: '2020-06-27T13:41',
-				issuedBy: 'daniel', //Biz acc name that issued it
+				issuedBy: 'biz', //Biz acc username that issued it
 				requestStatus: 'Available', //Available, In Progress or Complete
-				assignedVolunteer: '',
+				assignedVolunteer: 'vol',
 			},
 		],
 	});

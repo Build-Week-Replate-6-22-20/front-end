@@ -10,7 +10,7 @@ import IssuedPickupRequest from './Pickup Requests/IssuedPickupRequest';
 //Vol components
 
 import PublicPickupRequest from './Pickup Requests/PublicPickupRequest';
-import AssignedPickupRequests from './Pickup Requests/AssignedPickupRequest';
+import AssignedPickupRequest from './Pickup Requests/AssignedPickupRequest';
 
 
 function Dashboard(props) {
@@ -19,6 +19,12 @@ function Dashboard(props) {
 
 	const { data, setData } = useContext(MainContext);
 
+	//List of pickup requests issued by the user currently logged in - used for biz accounts only
+	let issued = data.pickupRequests.filter((item, index) => item.issuedBy === data.currAccount.username);
+
+	//List of pickup requests assigned to the current user - for vol accs only
+	let assigned = data.pickupRequests.filter((item, index) => (item.assignedVolunteer === data.currAccount.username && item.requestStatus === 'Available'));
+
 	return (
 		<div>
 			{data.currAccount.accountType === 'business' ? (
@@ -26,7 +32,9 @@ function Dashboard(props) {
 					<h1>Business Dashboard</h1>
 					<CreatePickupRequest />
 					<h2>Issued pick request(s)</h2>
-					<IssuedPickupRequest />
+					{issued.map((item, index) => {
+						return <IssuedPickupRequest item={item} index={index} key={index}/>;
+					})}
 				</>
 			) : (
 				<>
@@ -34,7 +42,11 @@ function Dashboard(props) {
 
 					<h3>Assigned Pickup Requests</h3>
 
-					<AssignedPickupRequests />
+					{assigned.map((item, index) => {
+						return (
+							<AssignedPickupRequest item={item} index={index} key={index} />
+						);
+					})}
 
 					<h3>Available Pickup Requests</h3>
 
