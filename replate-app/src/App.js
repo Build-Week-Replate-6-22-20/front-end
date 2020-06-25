@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
 
 //Components
@@ -72,6 +72,9 @@ function App() {
 
 				<div className="App">
 					{/* Add turnary to show correct component for /create-profile and /profile depending on account type that's signed in*/}
+					<Route exact path="/">
+						<Redirect to="/signin" />
+					</Route>
 					<PrivateRoute exact path="/signup" component={Signup} />
 					<PrivateRoute exact path="/signin" component={Signin} />
 					<PrivateRoute
