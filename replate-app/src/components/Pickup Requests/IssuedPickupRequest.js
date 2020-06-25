@@ -109,7 +109,7 @@ function IssuedPickupRequest(props) {
 					<p>Pickup Date</p>
 					<input
 						type="datetime-local"
-						name="pickupTime"
+						name="pickupDate"
 						onChange={setFormState}
 						value={formState.pickupDate}
 					/>
