@@ -33,13 +33,13 @@ function App() {
 				username: 'biz',
 				password: 'biz',
 				phoneNumber: '1234567890',
-				accType: 'busisness',
+				accountType: 'busisness',
 			},
 			{
 				username: 'vol',
 				password: 'vol',
 				phoneNumber: '1234567890',
-				accType: 'volunteer',
+				accountType: 'volunteer',
 			}
 		],
 		
@@ -49,6 +49,7 @@ function App() {
 			password: '',
 			phoneNumber: '',
 			accType: '',
+			arrID: 999999
 
 		},
 
@@ -67,7 +68,7 @@ function App() {
 
 	return (
 		<BrowserRouter>
-			<MainContext.Provider value={(data, setData)}>
+			<MainContext.Provider value={{data, setData}}>
 				<NavigationBar />
 
 				<div className="App">
