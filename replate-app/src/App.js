@@ -62,8 +62,16 @@ function App() {
 				weight: '1lb',
 				pickupDate: '2020-06-27T13:41',
 				issuedBy: 'biz', //Biz acc username that issued it
-				requestStatus: 'Available', //Available, In Progress or Complete
+				requestStatus: 'In Progress', //Available, In Progress or Complete
 				assignedVolunteer: 'vol',
+			},
+			{
+				foodType: 'idk',
+				weight: '1,000lb',
+				pickupDate: '2020-06-27T13:41',
+				issuedBy: 'biz', //Biz acc username that issued it
+				requestStatus: 'Available', //Available, In Progress or Complete
+				assignedVolunteer: '',
 			},
 		],
 	});

@@ -20,10 +20,61 @@ function Dashboard(props) {
 	const { data, setData } = useContext(MainContext);
 
 	//List of pickup requests issued by the user currently logged in - used for biz accounts only
-	let issued = data.pickupRequests.filter((item, index) => item.issuedBy === data.currAccount.username);
+
+	//let issued = data.pickupRequests.filter((item, index) => item.issuedBy === data.currAccount.username);
+
+	let issued = [];
+	
+	data.pickupRequests.forEach((item, index) => {
+
+		if (item.issuedBy === data.currAccount.username) {
+
+			issued.push({
+				...item,
+				arrID: index
+			});
+
+		}
+		
+	});
 
 	//List of pickup requests assigned to the current user - for vol accs only
-	let assigned = data.pickupRequests.filter((item, index) => (item.assignedVolunteer === data.currAccount.username && item.requestStatus === 'Available'));
+	
+	//let assigned = data.pickupRequests.filter((item, index) => (item.assignedVolunteer === data.currAccount.username && item.requestStatus === 'In Progress'));
+
+	let assigned = [];
+
+	data.pickupRequests.forEach((item, index) => {
+
+		if (item.assignedVolunteer === data.currAccount.username && item.requestStatus === "In Progress") {
+			
+			assigned.push({
+				...item,
+				arrID: index,
+			});
+
+		}
+
+	})
+
+	//Lists available pickup requests - for vol
+	
+	//let available = data.pickupRequests.filter((item, index) => (item.requestStatus === 'Available'));
+
+	let available = [];
+
+	data.pickupRequests.forEach((item, index) => {
+
+		if (item.requestStatus === 'Available') {
+
+				available.push({
+				...item,
+				arrID: index,
+			});
+
+		}
+
+	})
 
 	return (
 		<div>
@@ -33,7 +84,9 @@ function Dashboard(props) {
 					<CreatePickupRequest />
 					<h2>Issued pick request(s)</h2>
 					{issued.map((item, index) => {
-						return <IssuedPickupRequest item={item} index={index} key={index}/>;
+						return (
+							<IssuedPickupRequest item={item} index={item.arrID} key={index} />
+						);
 					})}
 				</>
 			) : (
@@ -44,13 +97,19 @@ function Dashboard(props) {
 
 					{assigned.map((item, index) => {
 						return (
-							<AssignedPickupRequest item={item} index={index} key={index} />
+							<AssignedPickupRequest item={item} index={item.arrID} key={index} />
 						);
 					})}
 
 					<h3>Available Pickup Requests</h3>
 
-					<PublicPickupRequest />
+					{available.map((item, index) => {
+						return (
+							<PublicPickupRequest item={item} index={item.arrID} key={index} />
+						);
+					})}
+
+					{/* <PublicPickupRequest /> */}
 				</>
 			)}
 		</div>
