@@ -17,6 +17,41 @@ function VolProfile(props) {
 		phoneNumber: ''
 	});
 
+	let updateProfile = (event) => {
+		event.preventDefault();
+
+		let newData = {
+			...data,
+		};
+
+		newData.currAccount = {
+			...data.currAccount,
+			...formState,
+		};
+
+		setData(newData);
+	};
+
+	let delProfile = (event) => {
+		event.preventDefault();
+
+		let newData = {
+			...data,
+		};
+
+		newData.currAccount = {
+			...data.currAccount,
+			username: '',
+			businessName: '',
+			businessAddress: '',
+			volunteerName: '',
+			phoneNumber: '',
+		};
+
+		setData(newData);
+	};
+
+
 	return (
 		<div>
 			<h1>Volunteer Profile</h1>
@@ -58,8 +93,8 @@ function VolProfile(props) {
 					/>
 				</label>
 				<div className="profile-controls">
-					<button>Update</button>
-					<button className="delProfile">Delete Profile</button>
+					<button onClick={updateProfile}>Update</button>
+					<button className="delProfile" onClick={delProfile}>Delete Profile</button>
 				</div>
 			</form>
 		</div>
