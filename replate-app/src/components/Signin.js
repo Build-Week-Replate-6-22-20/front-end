@@ -55,6 +55,7 @@ function Signin(props) {
 				...data,
 				currAccount: {
 
+					...data.currAccount,
 					...newData.currAccount
 
 				}

@@ -9,7 +9,7 @@ import './bizprofile.css';
 function BizProfile(props) {
 	//State
 
-	const userData = useContext(MainContext);
+	const {data, setData} = useContext(MainContext);
 
 	let [formState, setFormState, clearFormState] = useForm({
 		username: '',
@@ -23,10 +23,10 @@ function BizProfile(props) {
 			<h1>Business Profile</h1>
 
 			<div id="biz-profile-info">
-				<p>Username: </p>
-				<p>Business Name: </p>
-				<p>Business Address: </p>
-				<p>Phone Number: </p>
+				<p>Username: {data.currAccount.username}</p>
+				<p>Business Name: {data.currAccount.businessName}</p>
+				<p>Business Address: {data.currAccount.businessAddress}</p>
+				<p>Phone Number: {data.currAccount.phoneNumber}</p>
 			</div>
 
 			<form className="biz-profile-form">
@@ -71,7 +71,7 @@ function BizProfile(props) {
 				</label>
 				<div className="profile-controls">
 					<button>Update</button>
-					<button className='delProfile'>Delete Profile</button>
+					<button className="delProfile">Delete Profile</button>
 				</div>
 			</form>
 		</div>

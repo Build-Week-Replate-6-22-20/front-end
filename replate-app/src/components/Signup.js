@@ -34,11 +34,38 @@ function Signup(props) {
 			...data
 		}
 
-		newData.accounts.push(formState);
+		if (formState.accountType === 'business') {
+
+		newData.accounts.push({
+			username: formState.username,
+			password: formState.password,
+			businessName: '',
+			businessAddress: '',
+			phoneNumber: formState.phoneNumber,
+			accountType: 'busisness',
+		});
 
 		setData(newData);
 
 		history.push('/signin');
+
+		} else {
+
+			newData.accounts.push({
+				username: formState.username,
+				password: formState.password,
+				volunteerName: '',
+				businessAddress: '',
+				phoneNumber: formState.phoneNumber,
+				accountType: 'busisness',
+			});
+
+			setData(newData);
+
+			history.push('/signin');
+
+		}
+
 
 	}
 
