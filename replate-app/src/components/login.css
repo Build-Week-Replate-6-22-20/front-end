@@ -1,4 +1,4 @@
-.create-acc-form {
+.login-form {
 
     display: flex;
     flex-direction: column;
@@ -12,7 +12,7 @@
 
 }
 
-.create-acc-form input {
+.login-form input {
 
     width:306px;
     height: 30px;
@@ -22,7 +22,7 @@
 
 }
 
-.create-acc-form select {
+.login-form select {
 
     width:306px;
     height: 34px;
@@ -32,7 +32,7 @@
 
 }
 
-.create-acc-form button {
+.login-form button {
 
     margin-top: 20px;
     margin-bottom: 20px;

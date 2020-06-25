@@ -5,7 +5,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 //Components
 
 import Signup from './components/Signup';
-import Login from './components/Login';
+import Signin from './components/Signin';
 import PrivateRoute from './utils/PrivateRoute';
 import NavigationBar from './components/NavigationBar';
 import BizProfile from './components/Profiles/BizProfile';
@@ -73,7 +73,7 @@ function App() {
 				<div className="App">
 					{/* Add turnary to show correct component for /create-profile and /profile depending on account type that's signed in*/}
 					<PrivateRoute exact path="/signup" component={Signup} />
-					<PrivateRoute exact path="/login" component={Login} />
+					<PrivateRoute exact path="/signin" component={Signin} />
 					<PrivateRoute
 						exact
 						path="/create-profile"
