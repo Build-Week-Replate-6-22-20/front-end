@@ -46,9 +46,8 @@ function App() {
 		currAccount: {
 
 			username: '',
-			password: '',
 			phoneNumber: '',
-			accType: '',
+			accountType: '',
 			arrID: 999999
 
 		},

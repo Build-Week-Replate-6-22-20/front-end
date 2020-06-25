@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import MainContext from '../contexts/MainContext';
 
@@ -17,8 +17,10 @@ function Signup(props) {
 			username: '',
 			password: '',
 			phoneNumber: '',
-			accountType: ''
+			accountType: 'business'
 	});
+
+	let history = useHistory();
 
 	let createAcc = event => {
 
@@ -36,6 +38,7 @@ function Signup(props) {
 
 		setData(newData);
 
+		history.push('/signin');
 
 	}
 
